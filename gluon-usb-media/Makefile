@@ -5,14 +5,13 @@ PKG_VERSION:=4
 PKG_RELEASE:=$(GLUON_BRANCH)
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
-PKG_BUILD_DEPENDS := respondd
 
 include $(GLUONDIR)/include/package.mk
 
 define Package/gluon-usb-media
   SECTION:=gluon
   CATEGORY:=Gluon
-  DEPENDS:=+gluon-core +libgluonutil
+  DEPENDS:=+gluon-core
   TITLE:=Automatically mount your USB media
 endef
 
