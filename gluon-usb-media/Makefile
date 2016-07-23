@@ -26,9 +26,4 @@ define Package/gluon-usb-media/install
 	$(CP) ./files/* $(1)/
 endef
 
-define Package/gluon-autoupdater/postinst
-#!/bin/sh
-$(call GluonCheckSite,check_site.lua)
-endef
-
 $(eval $(call BuildPackage,gluon-usb-media))
