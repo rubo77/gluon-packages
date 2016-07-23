@@ -33,4 +33,9 @@ define Package/gluon-config-mode-contact-obligatory/install
 	$(call GluonInstallI18N,gluon-config-mode-contact-obligatory,$(1))
 endef
 
+define Package/gluon-config-mode-contact-obligatory/postinst
+#!/bin/sh
+$(call GluonCheckSite,check_site.lua)
+endef
+
 $(eval $(call BuildPackage,gluon-config-mode-contact-obligatory))

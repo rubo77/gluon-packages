@@ -1,6 +1,7 @@
 local cbi = require "luci.cbi"
 local i18n = require "luci.i18n"
 local uci = luci.model.uci.cursor()
+local site = require 'gluon.site_config'
 
 local M = {}
 
@@ -15,7 +16,7 @@ function M.section(form)
 
   local o = s:option(cbi.Value, "_contact", i18n.translate("Contact info"))
   o.default = uci:get_first("gluon-node-info", "owner", "contact", "")
-  o.rmempty = false
+  o.rmempty = not site.owner.obligatory
   o.datatype = "string"
   o.description = i18n.translate("e.g. E-mail or phone number")
   o.maxlen = 140
