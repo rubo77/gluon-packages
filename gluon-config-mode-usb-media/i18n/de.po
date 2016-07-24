@@ -12,11 +12,11 @@ msgstr ""
 
 msgid ""
 "If you want to share your attached USB storage devices, "
-"here you can enable this and specify the visable path in "
+"here you can enable this and specify the visible path in "
 "the URL of your Node."
 msgstr ""
 "Wenn du deine mit der Node verbundenen USB Speichermedien teilen möchtest, "
-"kannst du dies hier aktivieren und den Pfad in der URL bestimmen."
+"kannst du dies hier aktivieren und den Pfad in der URL bestimmen (nur Buchstaben erlaubt)."
 
 msgid "Path"
 msgstr "Pfad"
