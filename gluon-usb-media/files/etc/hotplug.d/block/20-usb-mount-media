@@ -1,7 +1,7 @@
 USBMEDIAPATH=$(uci get 'gluon-usb-media.settings.path')
 case "$ACTION" in
     add)
-        if [ "1" == $(uci get 'gluon-usb-media.settings.share_devices') ]; then
+        if [ "1" == $(uci get 'gluon-usb-media.settings.share_device') ]; then
           #if $DEVICENAME begins with "s"
           case "$DEVICENAME" in
                s*)
