@@ -19,7 +19,7 @@ function M.section(form)
 
   o = s:option(cbi.Value, "_usbmediapath", i18n.translate("Path"))
   o.default = uci:get("usb-media", "settings", "path")
-  o:depends("_sharing", "1")
+  o:depends("_usbmediasharing", "1")
   o.rmempty = false
   o.datatype = "hostname"
   o.description = i18n.translatef("e.g. %s", "media")
