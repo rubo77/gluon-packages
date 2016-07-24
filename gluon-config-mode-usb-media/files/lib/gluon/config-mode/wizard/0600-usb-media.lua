@@ -14,7 +14,7 @@ function M.section(form)
   local o
 
   o = s:option(cbi.Flag, "_usbmediasharing", i18n.translate("Share your devices"))
-  o.default = uci:get"usb-media", "settings", "share_device", o.disabled)
+  o.default = uci:get("usb-media", "settings", "share_device", o.disabled)
   o.rmempty = false
 
   o = s:option(cbi.Value, "_usbmediapath", i18n.translate("Path"))
