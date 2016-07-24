@@ -15,7 +15,7 @@ define Package/gluon-usb-media
   TITLE:=Automatically mount your USB media
 endef
 
-define Package/gluon-config-mode-usb-media/description
+define Package/gluon-usb-media/description
 	Automatically mount your USB media in the configured web path
 	in gluon-config-mode-usb-media if "Enable USB media" is set to true
 	The path is of the type "hostname", which is fitting perfect as a

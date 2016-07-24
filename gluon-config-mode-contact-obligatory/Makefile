@@ -17,6 +17,10 @@ define Package/gluon-config-mode-contact-obligatory
   DEPENDS:=gluon-config-mode-core-virtual +gluon-node-info
 endef
 
+define Package/gluon-config-mode-contact-obligatory/description
+	Set an obligatory custom string for a contact info that will be distributed in the mesh.
+endef
+
 define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
 endef
