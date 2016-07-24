@@ -19,4 +19,4 @@ web path to access it via http://[IPv6]
 ### gluon-usb-media
 
 Automatically mount your USB media in the configured web path
-in gluon-config-mode-usb-media if "Enable USB media" is set to true
+in gluon-config-mode-usb-media if "Enable USB media" is set to truew
