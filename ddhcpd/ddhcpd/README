@@ -1,0 +1,68 @@
+A Distributed DHCP Daemon
+=========================
+
+In self managed networks with decentralized client realms a central DHCP
+server is not available. DDHCP allows every realm to have its own server,
+while preserving roaming features for the client, by maintaining a common
+consens about lease state.
+
+    Usage: ddhcp [-h] [-d|-D] [-L] [-c CLT-IFACE] [-i SRV-IFACE] [-t TENTATIVE-TIMEOUT]
+
+    -h              This usage information.
+    -c CLT-IFACE    Interface on which requests from clients are handled
+    -i SRV-IFACE    Interface on which different servers communicate
+    -t TENTATIVE    Time required for a block to be claimed
+    -L              Deactivate learning phase
+    -d              Run in background and daemonize
+    -D              Run in foreground and log to console (default)
+
+
+Testing
+-------
+
+The network-test script can create a setup of virtual interfaces
+which is composed of a <number> of server and client interface pairs.
+Which are called srvX and cltX in the main network namespace and server0
+and client0 in the ''daemon'' network namespace. All srvX are bridged
+via br-srv, so the daemons can talk to each other.
+
+Inside the daemon network ns the client0 interface has the address 10.0.0.1/20,
+a ipv4 address is needed on this interface so the dhcp part of ddhcp is able
+to bind on this interface. There is no need for an ipv4 address on the server0
+interface because, we use ipv6 multicast and link local addresses for d2d communication.
+
+You can setup a basic ddhcp network testing enviroment by calling
+
+    # ./network-test net-init <number>
+
+to create a virtual network for <number> of ddhcp instances. You
+will need to have priviledges to create network namespaces. Short
+use sudo and check the network-test script upfront.
+
+To start the (n-1)-th instance of ddhcp in your test environment
+use for example, we also reduce the tentative timeout from 12 to 3 seconds:
+
+    # ./network-test srv-start <n> ./ddhcp -t 3
+
+After starting multiple instances you can make dhcp request
+against specific instances of ddhcp by starting dhcp clients pointed
+to the cltX interfaces. For example by
+
+    # dhclient -sf /dev/null -d -v clt0
+
+for the first ddhcp instance. You can create multiple parallel running clients
+with different mac addresses via:
+
+   # ./network-test clt-start <n>
+
+To deconfigure the setup you can call.
+
+    # ./network-test net-stop
+
+Performance Factors
+-------------------
+
+### Life cycle packets
+
+We call packets life cycle packets if they would be send during scenario where
+the amount of instances is constant and no client interaction is happening. 
